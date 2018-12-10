@@ -62,6 +62,9 @@ class DCGAN(GAN):
         X = np.concatenate((real_img, self.G.predict(z_noise(sz))))
         return X, [0]*sz + [1]*sz
 
+    def eval_gen_loss(self, n_samples=1000):
+        return self.m.evaluate(x=z_noise(n_samples), y=np.zeros([n_samples]))
+
     def generator(self):
         """ DCGAN Generator, small neural network with Upsampling and ReLU
         """

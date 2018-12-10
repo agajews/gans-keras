@@ -85,8 +85,8 @@ def main(args=None):
     A = []
     B = []
 
-    n_x = 10
-    n_y = 10
+    n_x = 50
+    n_y = 50
     n_samples = 50
 
     for l in layers:
@@ -118,7 +118,8 @@ def main(args=None):
 
     xx, yy = np.meshgrid(xs, ys)
     plt.contour(xx, yy, loss)
-    plt.show()
+    # plt.show()
+    plt.savefig('figures/{}_landscape.png'.format(args.type))
 
 
 if __name__ == '__main__':
