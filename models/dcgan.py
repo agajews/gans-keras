@@ -66,24 +66,26 @@ class DCGAN(GAN):
         """ DCGAN Generator, small neural network with Upsampling and ReLU
         """
         return Sequential([
-            Dense(512*7*7, input_dim=self.noise_dim, activation='relu'),
+            Dense(512*7*7, input_dim=self.noise_dim, activation=LeakyReLU()),  # 0
             BatchNormalization(mode=2),
             Reshape((7, 7, 512)),
             UpSampling2D(),
-            Convolution2D(64, 3, 3, border_mode='same', activation='relu'),
+            Convolution2D(64, 5, 5, border_mode='same', activation='relu'),  # 4
             BatchNormalization(mode=2),
             UpSampling2D(),
-            Convolution2D(32, 3, 3, border_mode='same', activation='relu'),
+            Convolution2D(64, 3, 3, border_mode='same', activation='relu'),
             BatchNormalization(mode=2),
-            Convolution2D(1, 1, 1, border_mode='same', activation='tanh')
+            Convolution2D(32, 3, 3, border_mode='same', activation='relu'),  # 7
+            BatchNormalization(mode=2),
+            Convolution2D(1, 1, 1, border_mode='same', activation='tanh')  # 9
         ])
 
     def discriminator(self):
         """ DCGAN Discriminator, small neural network with upsampling
         """
         return Sequential([
-            Convolution2D(256, 5, 5, subsample=(2,2), border_mode='same', input_shape=self.img_shape, activation=LeakyReLU()),
-            Convolution2D(512, 5, 5, subsample=(2,2), border_mode='same', activation=LeakyReLU()),
+            Convolution2D(128, 5, 5, subsample=(2,2), border_mode='same', input_shape=self.img_shape, activation=LeakyReLU()),
+            Convolution2D(256, 5, 5, subsample=(2,2), border_mode='same', activation=LeakyReLU()),
             Flatten(),
             Dense(256, activation=LeakyReLU()),
             Dense(1, activation = 'sigmoid')
