@@ -87,7 +87,7 @@ def main(args=None):
 
     n_x = 50
     n_y = 50
-    n_samples = 100
+    n_samples = 500
 
     for l in layers:
         W, b = model.G.layers[l].get_weights()
@@ -116,10 +116,11 @@ def main(args=None):
 
     print('Done!')
 
+    np.save('{}_loss'.format(args.type), loss)
     xx, yy = np.meshgrid(xs, ys)
     plt.contour(xx, yy, loss)
     # plt.show()
-    plt.savefig('figures/{}_landscape.png'.format(args.type))
+    plt.savefig('figures/{}_landscape_n_samples_{}.png'.format(args.type, n_samples))
 
 
 if __name__ == '__main__':
