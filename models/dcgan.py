@@ -67,14 +67,14 @@ class DCGAN(GAN):
         """
         return Sequential([
             Dense(512*7*7, input_dim=self.noise_dim, activation='relu'),
-            BatchNormalization(mode=2),
+            BatchNormalization(),
             Reshape((7, 7, 512)),
             UpSampling2D(),
             Convolution2D(64, 3, 3, border_mode='same', activation='relu'),
-            BatchNormalization(mode=2),
+            BatchNormalization(),
             UpSampling2D(),
             Convolution2D(32, 3, 3, border_mode='same', activation='relu'),
-            BatchNormalization(mode=2),
+            BatchNormalization(),
             Convolution2D(1, 1, 1, border_mode='same', activation='tanh')
         ])
 
