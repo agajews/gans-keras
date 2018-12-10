@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
 
-loss = np.load('DCGAN_loss_n_samples_500_large.npy')
+loss = np.load('WGAN_loss_n_samples_500_xlarge_epoch_1.npy')
 xs = np.linspace(-2, 2, loss.shape[0])
 ys = np.linspace(-2, 2, loss.shape[1])
 xx, yy = np.meshgrid(xs, ys)
