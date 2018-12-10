@@ -103,8 +103,8 @@ def main(args=None):
         B_W *= np.linalg.norm(W.reshape(-1, W.shape[-1]), axis=0)
         B.append(B_W)
 
-    xs = np.linspace(-2, 2, n_x)
-    ys = np.linspace(-2, 2, n_y)
+    xs = np.linspace(-3, 3, n_x)
+    ys = np.linspace(-3, 3, n_y)
     loss = np.zeros((n_x, n_y))
 
     for i, x in enumerate(ys):
@@ -116,11 +116,11 @@ def main(args=None):
 
     print('Done!')
 
-    np.save('{}_loss_n_samples_{}_large'.format(args.type, n_samples), loss)
+    np.save('{}_loss_n_samples_{}_xlarge'.format(args.type, n_samples), loss)
     xx, yy = np.meshgrid(xs, ys)
     plt.contour(xx, yy, loss)
     # plt.show()
-    plt.savefig('figures/{}_landscape_n_samples_{}_large.png'.format(args.type, n_samples))
+    plt.savefig('figures/{}_landscape_n_samples_{}_xlarge.png'.format(args.type, n_samples))
 
 
 if __name__ == '__main__':
