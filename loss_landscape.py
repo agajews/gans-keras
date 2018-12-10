@@ -116,11 +116,11 @@ def main(args=None):
 
     print('Done!')
 
-    np.save('{}_loss_n_samples_{}_xlarge_epoch_1'.format(args.type, n_samples), loss)
+    np.save('{}_loss_n_samples_{}_xlarge_epoch_100'.format(args.type, n_samples), loss)
     xx, yy = np.meshgrid(xs, ys)
     plt.contour(xx, yy, loss)
     # plt.show()
-    plt.savefig('figures/{}_landscape_n_samples_{}_xlarge_epoch_1.png'.format(args.type, n_samples))
+    plt.savefig('figures/{}_landscape_n_samples_{}_xlarge_epoch_100.png'.format(args.type, n_samples))
 
 
 if __name__ == '__main__':
