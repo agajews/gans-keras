@@ -85,9 +85,9 @@ def main(args=None):
     A = []
     B = []
 
-    n_x = 10
-    n_y = 10
-    n_samples = 10
+    n_x = 50
+    n_y = 50
+    n_samples = 100
 
     for l in layers:
         W, b = model.G.layers[l].get_weights()
